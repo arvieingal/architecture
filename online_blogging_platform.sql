@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2023 at 02:41 PM
+-- Generation Time: Oct 03, 2023 at 06:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -31,7 +31,9 @@ CREATE TABLE `articles` (
   `articleId` int(11) NOT NULL,
   `title` varchar(31) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
-  `publishedDate` date DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleteAt` timestamp NULL DEFAULT NULL,
   `bloggerID` int(11) DEFAULT NULL,
   `categoryID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -48,7 +50,9 @@ CREATE TABLE `bloggers` (
   `email` varchar(63) DEFAULT NULL,
   `username` varchar(31) DEFAULT NULL,
   `password` varchar(63) DEFAULT NULL,
-  `registrationDate` date DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleteAt` timestamp NULL DEFAULT NULL,
   `profilePicture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -75,7 +79,9 @@ CREATE TABLE `comments` (
   `commenterName` varchar(63) DEFAULT NULL,
   `commenterEmail` varchar(63) DEFAULT NULL,
   `commentContent` varchar(255) DEFAULT NULL,
-  `commentDate` date DEFAULT NULL
+  `createdAt` timestamp NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleteAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

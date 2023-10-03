@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2023 at 02:41 PM
+-- Generation Time: Oct 03, 2023 at 06:15 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,6 +45,9 @@ CREATE TABLE `employees` (
   `dateOfBirth` date DEFAULT NULL,
   `email` varchar(63) DEFAULT NULL,
   `phoneNumber` varchar(11) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deletedAt` timestamp NULL DEFAULT NULL,
   `departmentId` int(11) DEFAULT NULL,
   `projectId` int(11) DEFAULT NULL,
   `supervisorId` int(11) DEFAULT NULL
@@ -142,15 +145,15 @@ ALTER TABLE `supervisors`
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`departmentID`),
-  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`projectID`) REFERENCES `projects` (`projectID`),
-  ADD CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`supervisorID`) REFERENCES `supervisors` (`supervisorID`);
+  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`departmentId`) REFERENCES `departments` (`departmentId`),
+  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`projectId`) REFERENCES `projects` (`projectId`),
+  ADD CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`supervisorId`) REFERENCES `supervisors` (`supervisorId`);
 
 --
 -- Constraints for table `projects`
 --
 ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`departmentID`);
+  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`departmentId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2023 at 02:41 PM
+-- Generation Time: Oct 03, 2023 at 06:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `airports` (
   `airportCode` varchar(3) NOT NULL,
   `airportName` varchar(63) DEFAULT NULL,
-  `location` varchar(63) DEFAULT NULL
+  `streetAddress` varchar(63) DEFAULT NULL,
+  `cityAddress` varchar(31) NOT NULL,
+  `stateAddress` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -60,7 +62,10 @@ CREATE TABLE `passengers` (
   `firstName` varchar(31) DEFAULT NULL,
   `lastName` varchar(31) DEFAULT NULL,
   `email` varchar(63) DEFAULT NULL,
-  `phoneNumber` varchar(11) DEFAULT NULL
+  `phoneNumber` varchar(11) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deletedAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
